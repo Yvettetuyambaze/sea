@@ -1,0 +1,25 @@
+# Data (do not redistribute restricted recordings)
+data/
+!data/.gitkeep
+
+# Checkpoints and caches
+results/checkpoints/
+results/cache/
+*.pt
+*.ckpt
+*.pth
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+*.egg-info/
+dist/
+build/
+
+# Notebooks / OS
+.ipynb_checkpoints/
+.DS_Store
+Thumbs.db

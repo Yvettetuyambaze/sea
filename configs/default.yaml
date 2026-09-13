@@ -1,0 +1,70 @@
+seed: 42
+device: auto
+output_dir: results
+data_root: data
+
+signal:
+  target_fs: 100
+  duration_sec: 10
+  n_leads: 12
+  lead_order: [I, II, III, aVR, aVL, aVF, V1, V2, V3, V4, V5, V6]
+
+model:
+  name: resnet1d_wang
+  inplanes: 128
+  dropout: 0.5
+
+train:
+  epochs: 30
+  batch_size: 16
+  lr: 0.001
+  weight_decay: 0.0001
+  optimizer: adamw
+  scheduler: cosine
+  amp: true
+  num_workers: 0
+  early_stop_patience: 8
+  grad_clip: 1.0
+
+eval:
+  bootstrap_n: 1000
+  ece_bins: 15
+
+adaptation:
+  percentages: [5, 10, 20, 30, 50]
+  eval_fraction: 0.3
+  monte_carlo_reps: 10
+  linear_probe_epochs: 15
+  linear_probe_lr: 0.001
+  tau_auroc: 0.01
+  tau_brier: 0.01
+  tau_ece: 0.005
+
+datasets:
+  ptbxl:
+    root: data/ptbxl
+    sampling_rate: 100
+  chapman:
+    root: data/chapman
+  georgia:
+    root: data/georgia
+  cpsc:
+    root: data/cpsc
+  mimic:
+    root: data/mimic-iv-ecg
+
+# Shared scored SNOMED-CT labels present with usable counts
+# in PTB-XL, Chapman-Shaoxing, and Georgia (MIMIC stand-in).
+snomed_shared:
+  - {code: "164889003", name: AF, equivalents: ["164889003"]}
+  - {code: "270492004", name: IAVB, equivalents: ["270492004"]}
+  - {code: "164909002", name: LBBB, equivalents: ["164909002", "733534002"]}
+  - {code: "59118001", name: RBBB, equivalents: ["59118001", "713427006"]}
+  - {code: "426783006", name: NSR, equivalents: ["426783006"]}
+  - {code: "284470004", name: PAC, equivalents: ["284470004", "63593006"]}
+  - {code: "426177001", name: SB, equivalents: ["426177001"]}
+  - {code: "427084000", name: STach, equivalents: ["427084000"]}
+  - {code: "164934002", name: TAb, equivalents: ["164934002"]}
+  - {code: "39732003", name: LAD, equivalents: ["39732003"]}
+
+superclass_labels: [NORM, MI, STTC, CD, HYP]
