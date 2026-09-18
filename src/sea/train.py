@@ -10,7 +10,6 @@ import torch.nn as nn
 from torch.utils.data import DataLoader, Subset
 from tqdm import tqdm
 
-from .data.datasets import ECGDataset
 from .metrics import metric_bundle
 from .models.resnet1d import resnet1d_wang
 
@@ -19,6 +18,25 @@ def resolve_device(name: str = "auto") -> torch.device:
     if name != "auto":
         return torch.device(name)
     return torch.device("cuda" if torch.cuda.is_available() else "cpu")
+
+
+def make_loader(
+    dataset,
+    indices,
+    cfg: dict[str, Any],
+    shuffle: bool = False,
+    drop_last: bool = False,
+) -> DataLoader:
+    train_cfg = cfg["train"]
+    device = resolve_device(cfg.get("device", "auto"))
+    return DataLoader(
+        Subset(dataset, np.asarray(indices).tolist()),
+        batch_size=train_cfg["batch_size"],
+        shuffle=shuffle,
+        num_workers=train_cfg.get("num_workers", 0),
+        pin_memory=device.type == "cuda",
+        drop_last=drop_last,
+    )
 
 
 def collect_logits(model: nn.Module, loader: DataLoader, device: torch.device) -> tuple[np.ndarray, np.ndarray]:
@@ -33,7 +51,7 @@ def collect_logits(model: nn.Module, loader: DataLoader, device: torch.device) -
 
 
 def train_one_model(
-    dataset: ECGDataset,
+    dataset,
     train_idx: np.ndarray,
     val_idx: np.ndarray,
     num_classes: int,
@@ -51,18 +69,8 @@ def train_one_model(
         dropout=cfg["model"]["dropout"],
     ).to(device)
 
-    train_loader = DataLoader(
-        Subset(dataset, train_idx.tolist()),
-        batch_size=train_cfg["batch_size"],
-        shuffle=True,
-        num_workers=train_cfg.get("num_workers", 0),
-    )
-    val_loader = DataLoader(
-        Subset(dataset, val_idx.tolist()),
-        batch_size=train_cfg["batch_size"],
-        shuffle=False,
-        num_workers=train_cfg.get("num_workers", 0),
-    )
+    train_loader = make_loader(dataset, train_idx, cfg, shuffle=True)
+    val_loader = make_loader(dataset, val_idx, cfg, shuffle=False)
 
     # pos_weight stabilizes rare diagnostic / SNOMED labels
     y_train = dataset.labels[train_idx]
@@ -130,6 +138,16 @@ def train_one_model(
 
     summary = {"best_val_auroc": best_auroc, "checkpoint": str(best_path), "history": history}
     (out_dir / f"{tag}_train.json").write_text(json.dumps(summary, indent=2), encoding="utf-8")
+    try:
+        from .viz import plot_training_history
+
+        plot_training_history(
+            history,
+            Path(cfg["output_dir"]) / "figures" / f"{tag}_train.png",
+            f"{tag} validation curves",
+        )
+    except Exception as exc:
+        print(f"training figure skipped: {exc}")
     return summary
 
 

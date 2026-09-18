@@ -5,11 +5,9 @@ from pathlib import Path
 from typing import Any
 
 import numpy as np
-from torch.utils.data import DataLoader, Subset
 
-from .data.datasets import ECGDataset
 from .metrics import bootstrap_metrics, chance_level_test
-from .train import collect_logits, resolve_device
+from .train import collect_logits, make_loader, resolve_device
 
 
 def evaluate_loader(model, loader, cfg: dict[str, Any], seed: int = 0) -> dict[str, Any]:
@@ -43,17 +41,12 @@ def evaluate_loader(model, loader, cfg: dict[str, Any], seed: int = 0) -> dict[s
 
 def evaluate_indices(
     model,
-    dataset: ECGDataset,
+    dataset,
     indices: np.ndarray,
     cfg: dict[str, Any],
     seed: int = 0,
 ) -> dict[str, Any]:
-    loader = DataLoader(
-        Subset(dataset, indices.tolist()),
-        batch_size=cfg["train"]["batch_size"],
-        shuffle=False,
-        num_workers=cfg["train"].get("num_workers", 0),
-    )
+    loader = make_loader(dataset, indices, cfg, shuffle=False)
     return evaluate_loader(model, loader, cfg, seed=seed)
 
 

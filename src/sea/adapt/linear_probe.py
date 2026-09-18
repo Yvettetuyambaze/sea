@@ -8,11 +8,10 @@ from typing import Any
 import numpy as np
 import torch
 import torch.nn as nn
-from torch.utils.data import DataLoader, Subset
 
 from ..data.datasets import ECGDataset
 from ..models.resnet1d import ResNet1dWang
-from ..train import collect_logits, resolve_device
+from ..train import collect_logits, make_loader, resolve_device
 
 
 def fit_linear_probe(
@@ -29,11 +28,13 @@ def fit_linear_probe(
     probed.head.train()
 
     adapt_cfg = cfg["adaptation"]
-    loader = DataLoader(
-        Subset(dataset, adapt_idx.tolist()),
-        batch_size=cfg["train"]["batch_size"],
+    batch_size = int(cfg["train"]["batch_size"])
+    loader = make_loader(
+        dataset,
+        adapt_idx,
+        cfg,
         shuffle=True,
-        num_workers=cfg["train"].get("num_workers", 0),
+        drop_last=len(adapt_idx) > batch_size,
     )
     y_adapt = dataset.labels[adapt_idx]
     pos = y_adapt.sum(axis=0)
@@ -51,6 +52,8 @@ def fit_linear_probe(
     probed.freeze_backbone()
     for _ in range(epochs):
         for x, y in loader:
+            if x.size(0) < 2:
+                continue
             x = x.to(device)
             y = y.to(device)
             optimizer.zero_grad(set_to_none=True)
@@ -63,11 +66,6 @@ def fit_linear_probe(
 
 def probe_logits(model: ResNet1dWang, dataset: ECGDataset, indices: np.ndarray, cfg: dict[str, Any]) -> np.ndarray:
     device = resolve_device(cfg.get("device", "auto"))
-    loader = DataLoader(
-        Subset(dataset, indices.tolist()),
-        batch_size=cfg["train"]["batch_size"],
-        shuffle=False,
-        num_workers=cfg["train"].get("num_workers", 0),
-    )
+    loader = make_loader(dataset, indices, cfg, shuffle=False)
     _, logits = collect_logits(model, loader, device)
     return logits

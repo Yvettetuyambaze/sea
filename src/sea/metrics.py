@@ -10,6 +10,14 @@ def _safe_auroc(y_true: np.ndarray, y_score: np.ndarray) -> float:
     return float(roc_auc_score(y_true, y_score))
 
 
+def per_class_auroc(y_true: np.ndarray, y_score: np.ndarray, names: list[str] | None = None) -> dict[str, float]:
+    out = {}
+    labels = names or [str(i) for i in range(y_true.shape[1])]
+    for k, name in enumerate(labels):
+        out[name] = _safe_auroc(y_true[:, k], y_score[:, k])
+    return out
+
+
 def macro_auroc(y_true: np.ndarray, y_score: np.ndarray) -> float:
     aucs = []
     for k in range(y_true.shape[1]):

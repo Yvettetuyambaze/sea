@@ -1,10 +1,20 @@
-# Data (do not redistribute restricted recordings)
-data/
-!data/.gitkeep
+# Waveforms and local copies (never redistribute)
+/data/
 
-# Checkpoints and caches
-results/checkpoints/
-results/cache/
+# Writeups stay local
+/docs/
+*.pdf
+
+# Run output
+/results/
+*.log
+
+# PhysioNet credentials
+.env
+.netrc
+**/.netrc
+
+# Checkpoints
 *.pt
 *.ckpt
 *.pth
@@ -23,3 +33,6 @@ build/
 .ipynb_checkpoints/
 .DS_Store
 Thumbs.db
+
+# Machine-local dataset paths
+configs/runtime.yaml

@@ -16,7 +16,7 @@ model:
 
 train:
   epochs: 30
-  batch_size: 16
+  batch_size: 8
   lr: 0.001
   weight_decay: 0.0001
   optimizer: adamw
@@ -60,12 +60,9 @@ datasets:
     root: data/mimic-iv-ecg
     stream: true
     pn_dir: mimic-iv-ecg/1.0
-    # Do not download the 34 GB zip. Stream or cache this many records.
     max_records: 8000
     subsample_seed: 42
 
-# Shared scored SNOMED-CT labels present with usable counts
-# in PTB-XL, Chapman-Shaoxing, and Georgia (MIMIC stand-in).
 snomed_shared:
   - {code: "164889003", name: AF, equivalents: ["164889003"]}
   - {code: "270492004", name: IAVB, equivalents: ["270492004"]}
