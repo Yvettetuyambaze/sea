@@ -101,6 +101,10 @@ python scripts/summarize_results.py
 python tests/test_unit.py
 ```
 
+## Results
+
+Saved scores are in `results/eval/` (JSON). Plots are in `results/figures/`. Checkpoints, caches, and logs stay local.
+
 ## Layout
 
 ```text

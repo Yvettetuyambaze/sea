@@ -5,8 +5,12 @@
 /docs/
 *.pdf
 
-# Run output
-/results/
+# Run output (keep metrics JSON and figures only)
+/results/*
+!/results/eval/
+!/results/figures/
+/results/eval/*
+!/results/eval/*.json
 *.log
 
 # PhysioNet credentials
