@@ -1,4 +1,4 @@
-# SEA
+# SEA - Sample-efficient adaptation of 12-lead ECG classifiers
 
 Train a 12-lead ECG model on one dataset, test it on another, then adapt it with a small slice of labelled target data.
 
