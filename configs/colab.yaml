@@ -56,6 +56,7 @@ datasets:
     root: /content/data/georgia
   cpsc:
     root: /content/data/cpsc
+  # Unused this term. Current scores are PTB-XL, Chapman, and Georgia only.
   mimic:
     root: /content/data/mimic-iv-ecg
     stream: true
