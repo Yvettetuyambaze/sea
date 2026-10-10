@@ -1,0 +1,1019 @@
+{
+  "superclass": {
+    "dataset": "PTB-XL superclass",
+    "n": 21799,
+    "n_labels": 5,
+    "labels": [
+      {
+        "label": "NORM",
+        "positives": 9514,
+        "negatives": 12285,
+        "prevalence": 0.43644203862562503,
+        "ci_low": 0.42987010279696,
+        "ci_high": 0.44303637192604134,
+        "scorable": true
+      },
+      {
+        "label": "MI",
+        "positives": 5469,
+        "negatives": 16330,
+        "prevalence": 0.2508830680306436,
+        "ci_low": 0.24517226240867668,
+        "ci_high": 0.25668166107256357,
+        "scorable": true
+      },
+      {
+        "label": "STTC",
+        "positives": 5235,
+        "negatives": 16564,
+        "prevalence": 0.2401486306711317,
+        "ci_low": 0.2345239587599893,
+        "ci_high": 0.24586487275819227,
+        "scorable": true
+      },
+      {
+        "label": "CD",
+        "positives": 4898,
+        "negatives": 16901,
+        "prevalence": 0.22468920592687738,
+        "ci_low": 0.21919726303302742,
+        "ci_high": 0.23027816681186034,
+        "scorable": true
+      },
+      {
+        "label": "HYP",
+        "positives": 2649,
+        "negatives": 19150,
+        "prevalence": 0.1215193357493463,
+        "ci_low": 0.11724852133624793,
+        "ci_high": 0.12592352464146542,
+        "scorable": true
+      }
+    ],
+    "mean_labels_per_record": 1.2736822366714478,
+    "median_labels_per_record": 1.0,
+    "records_with_zero_mapped_labels": 411,
+    "records_with_zero_mapped_frac": 0.01885407587504014,
+    "cardinality_hist": {
+      "0": 411,
+      "1": 16244,
+      "2": 4068,
+      "3": 919,
+      "4": 157
+    },
+    "fold_counts": {
+      "train": 17418,
+      "val": 2183,
+      "test": 2198
+    },
+    "scp_basis": {
+      "n_records_in_table": 21799,
+      "unique_scp_codes": 71,
+      "diagnostic_scp_codes": 44,
+      "n_scp_per_superclass": {
+        "NORM": 1,
+        "MI": 14,
+        "STTC": 13,
+        "CD": 11,
+        "HYP": 5
+      },
+      "scp_per_superclass": {
+        "NORM": [
+          "NORM"
+        ],
+        "MI": [
+          "ALMI",
+          "AMI",
+          "ASMI",
+          "ILMI",
+          "IMI",
+          "INJAL",
+          "INJAS",
+          "INJIL",
+          "INJIN",
+          "INJLA",
+          "IPLMI",
+          "IPMI",
+          "LMI",
+          "PMI"
+        ],
+        "STTC": [
+          "ANEUR",
+          "DIG",
+          "EL",
+          "ISCAL",
+          "ISCAN",
+          "ISCAS",
+          "ISCIL",
+          "ISCIN",
+          "ISCLA",
+          "ISC_",
+          "LNGQT",
+          "NDT",
+          "NST_"
+        ],
+        "CD": [
+          "1AVB",
+          "2AVB",
+          "3AVB",
+          "CLBBB",
+          "CRBBB",
+          "ILBBB",
+          "IRBBB",
+          "IVCD",
+          "LAFB",
+          "LPFB",
+          "WPW"
+        ],
+        "HYP": [
+          "LAO/LAE",
+          "LVH",
+          "RAO/RAE",
+          "RVH",
+          "SEHYP"
+        ]
+      },
+      "demographics": {
+        "age": {
+          "n": 21799,
+          "missing": 0,
+          "missing_frac": 0.0,
+          "mean": 62.76930134409835,
+          "std": 32.30881276601973,
+          "median": 62.0,
+          "min": 2.0,
+          "max": 300.0
+        },
+        "sex": {
+          "n": 21799,
+          "missing": 0,
+          "missing_frac": 0.0,
+          "counts": {
+            "0": 11354,
+            "1": 10445
+          }
+        }
+      }
+    }
+  },
+  "snomed": {
+    "PTB-XL": {
+      "dataset": "PTB-XL",
+      "n": 21799,
+      "n_labels": 10,
+      "labels": [
+        {
+          "label": "AF",
+          "positives": 1514,
+          "negatives": 20285,
+          "prevalence": 0.0694527271893206,
+          "ci_low": 0.06615320504809044,
+          "ci_high": 0.07290397179256505,
+          "scorable": true
+        },
+        {
+          "label": "IAVB",
+          "positives": 793,
+          "negatives": 21006,
+          "prevalence": 0.03637781549612368,
+          "ci_low": 0.03397290572821841,
+          "ci_high": 0.038946103140790674,
+          "scorable": true
+        },
+        {
+          "label": "LBBB",
+          "positives": 536,
+          "negatives": 21263,
+          "prevalence": 0.024588283866232397,
+          "ci_low": 0.022614654163303397,
+          "ci_high": 0.026729446011235322,
+          "scorable": true
+        },
+        {
+          "label": "RBBB",
+          "positives": 541,
+          "negatives": 21258,
+          "prevalence": 0.024817652185880085,
+          "ci_low": 0.022834668389662444,
+          "ci_high": 0.026968087596052737,
+          "scorable": true
+        },
+        {
+          "label": "NSR",
+          "positives": 16748,
+          "negatives": 5051,
+          "prevalence": 0.7682921234919033,
+          "ci_low": 0.7626440703077512,
+          "ci_high": 0.7738456320253614,
+          "scorable": true
+        },
+        {
+          "label": "PAC",
+          "positives": 398,
+          "negatives": 21401,
+          "prevalence": 0.018257718243956146,
+          "ci_low": 0.016563434444376985,
+          "ci_high": 0.02012176534169127,
+          "scorable": true
+        },
+        {
+          "label": "SB",
+          "positives": 637,
+          "negatives": 21162,
+          "prevalence": 0.02922152392311574,
+          "ci_low": 0.02706724837845406,
+          "ci_high": 0.03154169918184928,
+          "scorable": true
+        },
+        {
+          "label": "STach",
+          "positives": 826,
+          "negatives": 20973,
+          "prevalence": 0.03789164640579843,
+          "ci_low": 0.03543731383016963,
+          "ci_high": 0.04050882339260412,
+          "scorable": true
+        },
+        {
+          "label": "TAb",
+          "positives": 0,
+          "negatives": 21799,
+          "prevalence": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0001761972164215512,
+          "scorable": false
+        },
+        {
+          "label": "LAD",
+          "positives": 0,
+          "negatives": 21799,
+          "prevalence": 0.0,
+          "ci_low": 0.0,
+          "ci_high": 0.0001761972164215512,
+          "scorable": false
+        }
+      ],
+      "mean_labels_per_record": 1.008899450302124,
+      "median_labels_per_record": 1.0,
+      "records_with_zero_mapped_labels": 1875,
+      "records_with_zero_mapped_frac": 0.08601311986788385,
+      "cardinality_hist": {
+        "0": 1875,
+        "1": 18029,
+        "2": 1728,
+        "3": 160,
+        "4": 7
+      }
+    },
+    "Chapman": {
+      "dataset": "Chapman",
+      "n": 10237,
+      "n_labels": 10,
+      "labels": [
+        {
+          "label": "AF",
+          "positives": 1778,
+          "negatives": 8459,
+          "prevalence": 0.17368369639542836,
+          "ci_low": 0.16646770622978105,
+          "ci_high": 0.1811445056415558,
+          "scorable": true
+        },
+        {
+          "label": "IAVB",
+          "positives": 247,
+          "negatives": 9990,
+          "prevalence": 0.024128162547621373,
+          "ci_low": 0.021329331832948804,
+          "ci_high": 0.027284016507484462,
+          "scorable": true
+        },
+        {
+          "label": "LBBB",
+          "positives": 205,
+          "negatives": 10032,
+          "prevalence": 0.0200253980658396,
+          "ci_low": 0.01748625353067086,
+          "ci_high": 0.02292464394869255,
+          "scorable": true
+        },
+        {
+          "label": "RBBB",
+          "positives": 454,
+          "negatives": 9783,
+          "prevalence": 0.04434893035068868,
+          "ci_low": 0.040528889365605905,
+          "ci_high": 0.04851082393295737,
+          "scorable": true
+        },
+        {
+          "label": "NSR",
+          "positives": 1822,
+          "negatives": 8415,
+          "prevalence": 0.1779818306144378,
+          "ci_low": 0.1706933732422657,
+          "ci_high": 0.18551188238828714,
+          "scorable": true
+        },
+        {
+          "label": "PAC",
+          "positives": 258,
+          "negatives": 9979,
+          "prevalence": 0.02520269610237374,
+          "ci_low": 0.022339814016376077,
+          "ci_high": 0.0284217952638612,
+          "scorable": true
+        },
+        {
+          "label": "SB",
+          "positives": 3887,
+          "negatives": 6350,
+          "prevalence": 0.37970108430204164,
+          "ci_low": 0.3703464965758509,
+          "ci_high": 0.38914592639063655,
+          "scorable": true
+        },
+        {
+          "label": "STach",
+          "positives": 1567,
+          "negatives": 8670,
+          "prevalence": 0.15307218911790563,
+          "ci_low": 0.14622747525072202,
+          "ci_high": 0.16017718586619242,
+          "scorable": true
+        },
+        {
+          "label": "TAb",
+          "positives": 1875,
+          "negatives": 8362,
+          "prevalence": 0.18315912865097198,
+          "ci_low": 0.17578549820725872,
+          "ci_high": 0.19077046922416804,
+          "scorable": true
+        },
+        {
+          "label": "LAD",
+          "positives": 382,
+          "negatives": 9855,
+          "prevalence": 0.037315619810491356,
+          "ci_low": 0.033814158390273755,
+          "ci_high": 0.04116421057502691,
+          "scorable": true
+        }
+      ],
+      "mean_labels_per_record": 1.2186187505722046,
+      "median_labels_per_record": 1.0,
+      "records_with_zero_mapped_labels": 835,
+      "records_with_zero_mapped_frac": 0.08156686529256618,
+      "cardinality_hist": {
+        "0": 835,
+        "1": 6776,
+        "2": 2233,
+        "3": 343,
+        "4": 46,
+        "5": 4
+      }
+    },
+    "Georgia": {
+      "dataset": "Georgia",
+      "n": 10334,
+      "n_labels": 10,
+      "labels": [
+        {
+          "label": "AF",
+          "positives": 570,
+          "negatives": 9764,
+          "prevalence": 0.05515773175924134,
+          "ci_low": 0.05091921144796943,
+          "ci_high": 0.05972686384109285,
+          "scorable": true
+        },
+        {
+          "label": "IAVB",
+          "positives": 768,
+          "negatives": 9566,
+          "prevalence": 0.0743177859492936,
+          "ci_low": 0.0694173651178512,
+          "ci_high": 0.07953457858382053,
+          "scorable": true
+        },
+        {
+          "label": "LBBB",
+          "positives": 231,
+          "negatives": 10103,
+          "prevalence": 0.022353396555060964,
+          "ci_low": 0.01967563952148699,
+          "ci_high": 0.025386145909622727,
+          "scorable": true
+        },
+        {
+          "label": "RBBB",
+          "positives": 556,
+          "negatives": 9778,
+          "prevalence": 0.05380298045287401,
+          "ci_low": 0.04961617295971049,
+          "ci_high": 0.058321406583005664,
+          "scorable": true
+        },
+        {
+          "label": "NSR",
+          "positives": 1750,
+          "negatives": 8584,
+          "prevalence": 0.1693439132959164,
+          "ci_low": 0.16223577189333022,
+          "ci_high": 0.1766978020163339,
+          "scorable": true
+        },
+        {
+          "label": "PAC",
+          "positives": 639,
+          "negatives": 9695,
+          "prevalence": 0.061834720340623185,
+          "ci_low": 0.05735170870726215,
+          "ci_high": 0.06664338133164888,
+          "scorable": true
+        },
+        {
+          "label": "SB",
+          "positives": 1676,
+          "negatives": 8658,
+          "prevalence": 0.1621830849622605,
+          "ci_low": 0.15520162092774054,
+          "ci_high": 0.1694156183226655,
+          "scorable": true
+        },
+        {
+          "label": "STach",
+          "positives": 1261,
+          "negatives": 9073,
+          "prevalence": 0.1220243855235146,
+          "ci_low": 0.11585362431746216,
+          "ci_high": 0.12847606245196946,
+          "scorable": true
+        },
+        {
+          "label": "TAb",
+          "positives": 2303,
+          "negatives": 8031,
+          "prevalence": 0.22285658989742596,
+          "ci_low": 0.21493651419828022,
+          "ci_high": 0.23098264169205576,
+          "scorable": true
+        },
+        {
+          "label": "LAD",
+          "positives": 939,
+          "negatives": 9395,
+          "prevalence": 0.090865105477066,
+          "ci_low": 0.08547449410155096,
+          "ci_high": 0.09655979050191986,
+          "scorable": true
+        }
+      ],
+      "mean_labels_per_record": 1.0347397327423096,
+      "median_labels_per_record": 1.0,
+      "records_with_zero_mapped_labels": 2259,
+      "records_with_zero_mapped_frac": 0.21859880007741436,
+      "cardinality_hist": {
+        "0": 2259,
+        "1": 5884,
+        "2": 1805,
+        "3": 349,
+        "4": 33,
+        "5": 4
+      }
+    }
+  },
+  "prevalence_shift_tests": [
+    {
+      "label": "AF",
+      "left": "PTB-XL",
+      "right": "Chapman",
+      "prev_left": 0.0694527271893206,
+      "prev_right": 0.17368369639542836,
+      "abs_diff": 0.10423096920610775,
+      "chi2": 819.6637266386775,
+      "p_value": 2.8633683310367955e-180,
+      "cramers_v": 0.1599553298157962
+    },
+    {
+      "label": "IAVB",
+      "left": "PTB-XL",
+      "right": "Chapman",
+      "prev_left": 0.03637781549612368,
+      "prev_right": 0.024128162547621373,
+      "abs_diff": 0.012249652948502304,
+      "chi2": 32.88906279204746,
+      "p_value": 9.757065958651963e-09,
+      "cramers_v": 0.032041040174502544
+    },
+    {
+      "label": "LBBB",
+      "left": "PTB-XL",
+      "right": "Chapman",
+      "prev_left": 0.024588283866232397,
+      "prev_right": 0.0200253980658396,
+      "abs_diff": 0.004562885800392796,
+      "chi2": 6.218148794208476,
+      "p_value": 0.012644725670586162,
+      "cramers_v": 0.013931934132838409
+    },
+    {
+      "label": "RBBB",
+      "left": "PTB-XL",
+      "right": "Chapman",
+      "prev_left": 0.024817652185880085,
+      "prev_right": 0.04434893035068868,
+      "abs_diff": 0.019531278164808596,
+      "chi2": 87.65003225117145,
+      "p_value": 7.812327455807745e-21,
+      "cramers_v": 0.05230664894766684
+    },
+    {
+      "label": "NSR",
+      "left": "PTB-XL",
+      "right": "Chapman",
+      "prev_left": 0.7682921234919033,
+      "prev_right": 0.1779818306144378,
+      "abs_diff": 0.5903102928774655,
+      "chi2": 9959.834781572667,
+      "p_value": 0.0,
+      "cramers_v": 0.5575796624332632
+    },
+    {
+      "label": "PAC",
+      "left": "PTB-XL",
+      "right": "Chapman",
+      "prev_left": 0.018257718243956146,
+      "prev_right": 0.02520269610237374,
+      "abs_diff": 0.0069449778584175954,
+      "chi2": 16.406221322843823,
+      "p_value": 5.111717919341789e-05,
+      "cramers_v": 0.022630030562732134
+    },
+    {
+      "label": "SB",
+      "left": "PTB-XL",
+      "right": "Chapman",
+      "prev_left": 0.02922152392311574,
+      "prev_right": 0.37970108430204164,
+      "abs_diff": 0.3504795603789259,
+      "chi2": 7052.616738988971,
+      "p_value": 0.0,
+      "cramers_v": 0.46919783477678817
+    },
+    {
+      "label": "STach",
+      "left": "PTB-XL",
+      "right": "Chapman",
+      "prev_left": 0.03789164640579843,
+      "prev_right": 0.15307218911790563,
+      "abs_diff": 0.1151805427121072,
+      "chi2": 1335.363447088326,
+      "p_value": 2.3352183653186407e-292,
+      "cramers_v": 0.20416467399048577
+    },
+    {
+      "label": "TAb",
+      "left": "PTB-XL",
+      "right": "Chapman",
+      "prev_left": 0.0,
+      "prev_right": 0.18315912865097198,
+      "abs_diff": 0.18315912865097198,
+      "chi2": null,
+      "p_value": null,
+      "cramers_v": null
+    },
+    {
+      "label": "LAD",
+      "left": "PTB-XL",
+      "right": "Chapman",
+      "prev_left": 0.0,
+      "prev_right": 0.037315619810491356,
+      "abs_diff": 0.037315619810491356,
+      "chi2": null,
+      "p_value": null,
+      "cramers_v": null
+    },
+    {
+      "label": "AF",
+      "left": "PTB-XL",
+      "right": "Georgia",
+      "prev_left": 0.0694527271893206,
+      "prev_right": 0.05515773175924134,
+      "abs_diff": 0.014294995430079269,
+      "chi2": 23.385797359605327,
+      "p_value": 1.3255360498118108e-06,
+      "cramers_v": 0.02697742252977523
+    },
+    {
+      "label": "IAVB",
+      "left": "PTB-XL",
+      "right": "Georgia",
+      "prev_left": 0.03637781549612368,
+      "prev_right": 0.0743177859492936,
+      "abs_diff": 0.03793997045316992,
+      "chi2": 217.51498743921294,
+      "p_value": 3.1509528570548156e-49,
+      "cramers_v": 0.08227520181234536
+    },
+    {
+      "label": "LBBB",
+      "left": "PTB-XL",
+      "right": "Georgia",
+      "prev_left": 0.024588283866232397,
+      "prev_right": 0.022353396555060964,
+      "abs_diff": 0.0022348873111714337,
+      "chi2": 1.4084528042755862,
+      "p_value": 0.23531340639515633,
+      "cramers_v": 0.0066205719914353735
+    },
+    {
+      "label": "RBBB",
+      "left": "PTB-XL",
+      "right": "Georgia",
+      "prev_left": 0.024817652185880085,
+      "prev_right": 0.05380298045287401,
+      "abs_diff": 0.028985328266993925,
+      "chi2": 177.74627551534712,
+      "p_value": 1.5049310338783387e-40,
+      "cramers_v": 0.074374595652621
+    },
+    {
+      "label": "NSR",
+      "left": "PTB-XL",
+      "right": "Georgia",
+      "prev_left": 0.7682921234919033,
+      "prev_right": 0.1693439132959164,
+      "abs_diff": 0.598948210195987,
+      "chi2": 10293.225643053065,
+      "p_value": 0.0,
+      "cramers_v": 0.5659787291015855
+    },
+    {
+      "label": "PAC",
+      "left": "PTB-XL",
+      "right": "Georgia",
+      "prev_left": 0.018257718243956146,
+      "prev_right": 0.061834720340623185,
+      "abs_diff": 0.04357700209666704,
+      "chi2": 424.87870685845763,
+      "p_value": 2.116179141765368e-94,
+      "cramers_v": 0.11498914539603328
+    },
+    {
+      "label": "SB",
+      "left": "PTB-XL",
+      "right": "Georgia",
+      "prev_left": 0.02922152392311574,
+      "prev_right": 0.1621830849622605,
+      "abs_diff": 0.13296156103914475,
+      "chi2": 1853.3575167828687,
+      "p_value": 0.0,
+      "cramers_v": 0.24016181932413724
+    },
+    {
+      "label": "STach",
+      "left": "PTB-XL",
+      "right": "Georgia",
+      "prev_left": 0.03789164640579843,
+      "prev_right": 0.1220243855235146,
+      "abs_diff": 0.08413273911771618,
+      "chi2": 815.7190733597645,
+      "p_value": 2.062969447769073e-179,
+      "cramers_v": 0.15932894174734727
+    },
+    {
+      "label": "TAb",
+      "left": "PTB-XL",
+      "right": "Georgia",
+      "prev_left": 0.0,
+      "prev_right": 0.22285658989742596,
+      "abs_diff": 0.22285658989742596,
+      "chi2": null,
+      "p_value": null,
+      "cramers_v": null
+    },
+    {
+      "label": "LAD",
+      "left": "PTB-XL",
+      "right": "Georgia",
+      "prev_left": 0.0,
+      "prev_right": 0.090865105477066,
+      "abs_diff": 0.090865105477066,
+      "chi2": null,
+      "p_value": null,
+      "cramers_v": null
+    },
+    {
+      "label": "AF",
+      "left": "Chapman",
+      "right": "Georgia",
+      "prev_left": 0.17368369639542836,
+      "prev_right": 0.05515773175924134,
+      "abs_diff": 0.11852596463618702,
+      "chi2": 713.3337977039713,
+      "p_value": 3.7689546108881595e-157,
+      "cramers_v": 0.18621673106931874
+    },
+    {
+      "label": "IAVB",
+      "left": "Chapman",
+      "right": "Georgia",
+      "prev_left": 0.024128162547621373,
+      "prev_right": 0.0743177859492936,
+      "abs_diff": 0.050189623401672226,
+      "chi2": 275.1022367127978,
+      "p_value": 8.768731025036742e-62,
+      "cramers_v": 0.11564300240940276
+    },
+    {
+      "label": "LBBB",
+      "left": "Chapman",
+      "right": "Georgia",
+      "prev_left": 0.0200253980658396,
+      "prev_right": 0.022353396555060964,
+      "abs_diff": 0.0023279984892213626,
+      "chi2": 1.233584324181868,
+      "p_value": 0.26671110315240343,
+      "cramers_v": 0.0077438461996244
+    },
+    {
+      "label": "RBBB",
+      "left": "Chapman",
+      "right": "Georgia",
+      "prev_left": 0.04434893035068868,
+      "prev_right": 0.05380298045287401,
+      "abs_diff": 0.009454050102185328,
+      "chi2": 9.643640904805608,
+      "p_value": 0.001900082331152552,
+      "cramers_v": 0.021651740488038675
+    },
+    {
+      "label": "NSR",
+      "left": "Chapman",
+      "right": "Georgia",
+      "prev_left": 0.1779818306144378,
+      "prev_right": 0.1693439132959164,
+      "abs_diff": 0.008637917318521426,
+      "chi2": 2.614253813991816,
+      "p_value": 0.10590733235801815,
+      "cramers_v": 0.011273173032332039
+    },
+    {
+      "label": "PAC",
+      "left": "Chapman",
+      "right": "Georgia",
+      "prev_left": 0.02520269610237374,
+      "prev_right": 0.061834720340623185,
+      "abs_diff": 0.03663202423824945,
+      "chi2": 164.5981203725865,
+      "p_value": 1.1196965246231982e-37,
+      "cramers_v": 0.0894509039377635
+    },
+    {
+      "label": "SB",
+      "left": "Chapman",
+      "right": "Georgia",
+      "prev_left": 0.37970108430204164,
+      "prev_right": 0.1621830849622605,
+      "abs_diff": 0.21751799933978114,
+      "chi2": 1232.159002199306,
+      "p_value": 6.2564386323045155e-270,
+      "cramers_v": 0.2447404053986087
+    },
+    {
+      "label": "STach",
+      "left": "Chapman",
+      "right": "Georgia",
+      "prev_left": 0.15307218911790563,
+      "prev_right": 0.1220243855235146,
+      "abs_diff": 0.03104780359439102,
+      "chi2": 41.54584646731376,
+      "p_value": 1.1513884564117049e-10,
+      "cramers_v": 0.044940314134315644
+    },
+    {
+      "label": "TAb",
+      "left": "Chapman",
+      "right": "Georgia",
+      "prev_left": 0.18315912865097198,
+      "prev_right": 0.22285658989742596,
+      "abs_diff": 0.039697461246453986,
+      "chi2": 49.82705427973742,
+      "p_value": 1.6791262202371081e-12,
+      "cramers_v": 0.04921584027942102
+    },
+    {
+      "label": "LAD",
+      "left": "Chapman",
+      "right": "Georgia",
+      "prev_left": 0.037315619810491356,
+      "prev_right": 0.090865105477066,
+      "abs_diff": 0.053549485666574644,
+      "chi2": 244.50916671431594,
+      "p_value": 4.08830384203857e-55,
+      "cramers_v": 0.10902343737987877
+    }
+  ],
+  "js_divergence_prevalence": {
+    "PTB-XL vs Chapman": 0.26681712321476925,
+    "PTB-XL vs Georgia": 0.2568580649480712,
+    "Chapman vs Georgia": 0.047678231658539724
+  },
+  "challenge_code_inventory": {
+    "chapman": {
+      "n_readable": 10237,
+      "unreadable_headers": 10,
+      "records_missing_dx_field": 0,
+      "unique_raw_codes": 54,
+      "kept_code_occurrences": 12475,
+      "dropped_code_occurrences": 6357,
+      "top_dropped": [
+        [
+          "55827005",
+          1295
+        ],
+        [
+          "428750005",
+          1157
+        ],
+        [
+          "426761007",
+          587
+        ],
+        [
+          "164890007",
+          445
+        ],
+        [
+          "429622005",
+          402
+        ],
+        [
+          "17338001",
+          294
+        ],
+        [
+          "251146004",
+          249
+        ],
+        [
+          "164917005",
+          235
+        ],
+        [
+          "698252002",
+          235
+        ],
+        [
+          "47665007",
+          215
+        ],
+        [
+          "164931005",
+          176
+        ],
+        [
+          "233917008",
+          166
+        ],
+        [
+          "251199005",
+          162
+        ],
+        [
+          "59931005",
+          157
+        ],
+        [
+          "713422000",
+          121
+        ]
+      ]
+    },
+    "georgia": {
+      "n_readable": 10334,
+      "unreadable_headers": 10,
+      "records_missing_dx_field": 0,
+      "unique_raw_codes": 67,
+      "kept_code_occurrences": 10707,
+      "dropped_code_occurrences": 12745,
+      "top_dropped": [
+        [
+          "428750005",
+          1881
+        ],
+        [
+          "111975006",
+          1388
+        ],
+        [
+          "164873001",
+          1231
+        ],
+        [
+          "164930006",
+          990
+        ],
+        [
+          "425623009",
+          901
+        ],
+        [
+          "67741000119109",
+          866
+        ],
+        [
+          "59931005",
+          811
+        ],
+        [
+          "164917005",
+          463
+        ],
+        [
+          "427393009",
+          455
+        ],
+        [
+          "425419005",
+          450
+        ],
+        [
+          "713426002",
+          407
+        ],
+        [
+          "251146004",
+          374
+        ],
+        [
+          "17338001",
+          357
+        ],
+        [
+          "426434006",
+          281
+        ],
+        [
+          "698252002",
+          203
+        ]
+      ]
+    }
+  },
+  "waveforms": {
+    "ptbxl": {
+      "exists": true,
+      "path": "results\\cache\\signals\\ptbxl_fs100_t10.npy",
+      "shape": [
+        21799,
+        12,
+        1000
+      ],
+      "sampled_records": 400,
+      "sampled_values": 4800000,
+      "nan_values": 0,
+      "inf_values": 0,
+      "all_zero_leads": 0,
+      "all_zero_lead_frac": 0.0
+    },
+    "chapman": {
+      "exists": true,
+      "path": "results\\cache\\signals\\chapman_fs100_t10.npy",
+      "shape": [
+        10237,
+        12,
+        1000
+      ],
+      "sampled_records": 400,
+      "sampled_values": 4800000,
+      "nan_values": 0,
+      "inf_values": 0,
+      "all_zero_leads": 0,
+      "all_zero_lead_frac": 0.0
+    },
+    "georgia": {
+      "exists": true,
+      "path": "results\\cache\\signals\\georgia_fs100_t10.npy",
+      "shape": [
+        10334,
+        12,
+        1000
+      ],
+      "sampled_records": 400,
+      "sampled_values": 4800000,
+      "nan_values": 0,
+      "inf_values": 0,
+      "all_zero_leads": 0,
+      "all_zero_lead_frac": 0.0
+    }
+  },
+  "policy": {
+    "labels": "drop unmapped; never impute a class",
+    "waveforms": "NaN/Inf -> 0; missing lead -> 0; failed read -> zeros; pad/crop to 10 s @ 100 Hz; per-lead z-score",
+    "snomed_basis": "PhysioNet/CinC 2021 equivalents (Reyna/Alday); intersection present on PTB-XL, Chapman, Georgia",
+    "superclass_basis": "PTB-XL scp_statements.csv diagnostic_class (Wagner 2020; Strodthoff 2021)"
+  }
+}

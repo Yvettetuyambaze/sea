@@ -11,7 +11,7 @@ from sea.audit import delta_m, pmin_delta
 from sea.config import apply_quick, load_config
 from sea.train import make_loader
 from sea.data.cache import ArrayECGDataset
-from sea.data.datasets import _safe_rdheader, load_challenge_dir
+from sea.data.datasets import _resolve_challenge_root, _safe_rdheader, load_challenge_dir
 from sea.data.discover import discover_roots, find_ptbxl_root
 from sea.data.labels import codes_to_multihot, report_text_to_snomed, scp_dict_to_snomed
 from sea.metrics import brier_score, chance_level_test, macro_auroc
@@ -82,6 +82,18 @@ def test_challenge_loader_skips_bad_headers(tmp_path: Path):
     assert Path(bundle.records[0]).name == "JS00001"
 
 
+def test_georgia_root_is_not_resolved_to_chapman(tmp_path: Path):
+    data = tmp_path / "data"
+    chapman = data / "chapman"
+    georgia = data / "georgia"
+    chapman.mkdir(parents=True)
+    georgia.mkdir(parents=True)
+    (chapman / "JS00001.hea").write_text("JS00001 1 500 500\n", encoding="ascii")
+    (georgia / "E00001.hea").write_text("E00001 1 500 500\n", encoding="ascii")
+    assert _resolve_challenge_root(georgia) == georgia
+    assert _resolve_challenge_root(chapman) == chapman
+
+
 def test_make_loader_drops_incomplete_batch():
     x = np.zeros((9, 12, 16), dtype=np.float32)
     y = np.zeros((9, 2), dtype=np.float32)
@@ -118,4 +130,6 @@ if __name__ == "__main__":
         test_challenge_loader_skips_bad_headers(Path(tmp))
     test_array_dataset_and_quick_config()
     test_make_loader_drops_incomplete_batch()
+    with TemporaryDirectory() as tmp:
+        test_georgia_root_is_not_resolved_to_chapman(Path(tmp))
     print("unit tests ok")

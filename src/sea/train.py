@@ -50,6 +50,25 @@ def collect_logits(model: nn.Module, loader: DataLoader, device: torch.device) -
     return np.concatenate(y_all), np.concatenate(logits_all)
 
 
+def collect_logits_and_pooled_features(
+    model: nn.Module,
+    loader: DataLoader,
+    device: torch.device,
+) -> tuple[np.ndarray, np.ndarray, np.ndarray]:
+    """One eval pass: labels, source logits, and frozen concat-pool features."""
+    model.eval()
+    y_all, logits_all, feats_all = [], [], []
+    with torch.no_grad():
+        for x, y in loader:
+            x = x.to(device, non_blocking=True)
+            maps = model.features(x)
+            pooled = model.head.flatten(model.head.pool(maps))
+            logits_all.append(model.head.fc(model.head.drop(model.head.bn(pooled))).cpu().numpy())
+            feats_all.append(pooled.cpu().numpy())
+            y_all.append(y.numpy())
+    return np.concatenate(y_all), np.concatenate(logits_all), np.concatenate(feats_all)
+
+
 def train_one_model(
     dataset,
     train_idx: np.ndarray,

@@ -24,7 +24,8 @@ class ArrayECGDataset(Dataset):
         return len(self.labels)
 
     def __getitem__(self, idx: int) -> tuple[torch.Tensor, torch.Tensor]:
-        return torch.from_numpy(np.asarray(self.signals[idx])), torch.from_numpy(self.labels[idx])
+        x = np.nan_to_num(np.array(self.signals[idx], copy=True), nan=0.0, posinf=0.0, neginf=0.0)
+        return torch.from_numpy(x), torch.from_numpy(self.labels[idx].copy())
 
 
 def cache_path(bundle: ECGBundle, cfg: dict[str, Any]) -> Path:
@@ -75,7 +76,7 @@ def materialize_dataset(bundle: ECGBundle, cfg: dict[str, Any]) -> ArrayECGDatas
     for i in tqdm(range(n), desc=f"cache {bundle.name}"):
         try:
             x, _ = lazy[i]
-            array[i] = x.numpy()
+            array[i] = np.nan_to_num(x.numpy(), nan=0.0, posinf=0.0, neginf=0.0)
         except Exception:
             failed += 1
             array[i] = 0.0

@@ -71,12 +71,29 @@ def download_file(
 def _read_text(url: str) -> str:
     curl = shutil.which("curl.exe") or shutil.which("curl")
     if curl:
-        result = subprocess.run(
-            [curl, "-L", "--max-time", "60", "-A", USER_AGENT, url],
-            check=True,
-            capture_output=True,
-        )
-        return result.stdout.decode("utf-8", errors="replace")
+        last_error = None
+        for attempt in range(1, 6):
+            result = subprocess.run(
+                [
+                    curl,
+                    "-L",
+                    "--retry",
+                    "5",
+                    "--retry-all-errors",
+                    "--max-time",
+                    "120",
+                    "-A",
+                    USER_AGENT,
+                    url,
+                ],
+                capture_output=True,
+            )
+            if result.returncode == 0 and result.stdout:
+                return result.stdout.decode("utf-8", errors="replace")
+            last_error = result
+            print(f"retry {attempt}/5 listing {url} (curl exit {result.returncode})", flush=True)
+        if last_error is not None:
+            last_error.check_returncode()
     with _open(url) as handle:
         return handle.read().decode("utf-8", errors="replace")
 

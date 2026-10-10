@@ -145,7 +145,7 @@ def load_bundle(name: str, cfg: dict[str, Any], task: str) -> ECGBundle:
         return load_mimic(_resolve_mimic(Path(cfg["datasets"]["mimic"]["root"])), cfg, task)
     if name not in cfg["datasets"]:
         raise ValueError(f"Unknown dataset {name}")
-    return load_challenge_dir(name, _resolve_chapman(Path(cfg["datasets"][name]["root"])), cfg, task)
+    return load_challenge_dir(name, _resolve_challenge_root(Path(cfg["datasets"][name]["root"])), cfg, task)
 
 
 def _resolve_ptbxl(root: Path) -> Path:
@@ -173,9 +173,23 @@ def _resolve_mimic(root: Path) -> Path:
 
 
 def _resolve_chapman(root: Path) -> Path:
+    return _resolve_challenge_root(root)
+
+
+def _resolve_challenge_root(root: Path) -> Path:
+    """Use the requested folder if it already has WFDB headers.
+
+    Do not walk the parent ``data/`` tree: that used to resolve Georgia to
+    Chapman because ``find_chapman_root(data)`` finds ``JS*.hea``.
+    """
+    root = Path(root)
     if not root.exists():
-        raise FileNotFoundError(f"Chapman folder missing: {root}")
-    found = find_chapman_root(root) or find_chapman_root(root.parent)
+        raise FileNotFoundError(f"Dataset folder missing: {root}")
+    if next(root.glob("*.hea"), None) is not None:
+        return root
+    if next(root.glob("g*/*.hea"), None) is not None:
+        return root
+    found = find_chapman_root(root)
     return found or root
 
 

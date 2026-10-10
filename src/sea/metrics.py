@@ -7,6 +7,8 @@ from sklearn.metrics import roc_auc_score
 def _safe_auroc(y_true: np.ndarray, y_score: np.ndarray) -> float:
     if y_true.max() == y_true.min():
         return float("nan")
+    if not np.isfinite(y_score).all():
+        y_score = np.nan_to_num(y_score, nan=0.5, posinf=1.0, neginf=0.0)
     return float(roc_auc_score(y_true, y_score))
 
 

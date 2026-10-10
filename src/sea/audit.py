@@ -26,11 +26,23 @@ def pmin_delta(percentages: Iterable[float], values: Iterable[float], tau: float
 
 def summarize_adaptation(rows: list[dict], taus: dict[str, float]) -> pd.DataFrame:
     df = pd.DataFrame(rows)
+    unadapted = (
+        df[df["method"] == "unadapted"]
+        .groupby(["source", "target", "metric"])["value"]
+        .mean()
+        if (df["method"] == "unadapted").any()
+        else None
+    )
     summaries = []
     group_cols = ["source", "target", "method", "metric"]
     for keys, part in df.groupby(group_cols, dropna=False):
         source, target, method, metric = keys
-        baseline = part.loc[part["P"] == 0, "value"].mean() if (part["P"] == 0).any() else np.nan
+        if (part["P"] == 0).any():
+            baseline = part.loc[part["P"] == 0, "value"].mean()
+        elif unadapted is not None and (source, target, metric) in unadapted.index:
+            baseline = float(unadapted.loc[(source, target, metric)])
+        else:
+            baseline = np.nan
         ordered = part[part["P"] > 0].groupby("P")["value"].mean().sort_index()
         pmin = pmin_delta(ordered.index.tolist(), ordered.tolist(), taus[metric]) if len(ordered) >= 2 else None
         last = ordered.iloc[-1] if len(ordered) else np.nan
