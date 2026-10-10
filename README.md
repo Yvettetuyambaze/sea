@@ -87,7 +87,7 @@ python scripts/run_local.py --skip-source
 python scripts/run_local.py --skip-ood
 ```
 
-Colab: open `notebooks/colab_milestones.ipynb` with a GPU runtime.
+GPU / Colab: use `configs/colab.yaml` with the same scripts.
 
 ```bash
 python scripts/run_milestone2.py --config configs/colab.yaml
@@ -109,7 +109,6 @@ Saved scores are in `results/eval/` (JSON). Plots are in `results/figures/`. Che
 
 ```text
 configs/               YAML configs
-notebooks/             Colab driver
 scripts/               download, train, eval, adapt
 src/sea/models/        1D-ResNet
 src/sea/data/          loaders, labels, preprocess, download
