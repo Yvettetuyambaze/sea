@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-"""Download ECG datasets. Default MIMIC mode is tables-only + PhysioNet streaming."""
+"""Download the public archives used in the current runs: PTB-XL, Chapman, Georgia."""
 
 from __future__ import annotations
 
@@ -20,19 +20,19 @@ def main() -> None:
     parser.add_argument(
         "--datasets",
         nargs="+",
-        default=["ptbxl", "chapman", "mimic"],
-        help="ptbxl, chapman, georgia, cpsc, mimic",
+        default=["ptbxl", "chapman", "georgia"],
+        help="ptbxl, chapman, georgia (public archives used in this project)",
     )
     parser.add_argument(
         "--tables-only",
         action="store_true",
         default=True,
-        help="MIMIC: download CSVs only and stream waveforms (skip the 34 GB zip)",
+        help="If a future credentialed archive is requested: tables only, no zip",
     )
     parser.add_argument(
         "--waveforms",
         action="store_true",
-        help="MIMIC: also prefetch the subset waveforms instead of streaming",
+        help="Prefetch waveforms instead of streaming (unused in the current public runs)",
     )
     args = parser.parse_args()
     cfg = load_config(args.config)

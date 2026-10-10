@@ -16,7 +16,7 @@ sys.path.insert(0, str(ROOT / "src"))
 PY = sys.executable
 
 from sea.config import load_config
-from sea.data.discover import find_mimic_root
+from sea.data.discover import find_chapman_root
 from sea.viz import plot_pipeline_board, write_html_index
 
 
@@ -56,10 +56,17 @@ def main() -> None:
 
     cfg_path = str(ROOT / "configs/local.yaml")
     cfg = load_config(cfg_path).raw
-    targets = ["chapman"]
-    mimic_root = Path(cfg["datasets"]["mimic"]["root"])
-    if find_mimic_root(mimic_root) is not None:
-        targets.append("mimic")
+    targets = []
+    chapman_root = Path(cfg["datasets"]["chapman"]["root"])
+    georgia_root = Path(cfg["datasets"]["georgia"]["root"])
+    if chapman_root.exists() and (
+        find_chapman_root(chapman_root) is not None or next(chapman_root.glob("*.hea"), None)
+    ):
+        targets.append("chapman")
+    if georgia_root.exists() and next(georgia_root.glob("*.hea"), None) is not None:
+        targets.append("georgia")
+    if not targets:
+        targets = ["chapman", "georgia"]
 
     steps = {
         "1": "running",

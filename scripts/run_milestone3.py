@@ -27,7 +27,7 @@ def main() -> None:
     parser.add_argument("--skip-m2", action="store_true")
     parser.add_argument("--quick", action="store_true")
     parser.add_argument("--reps", type=int, default=None)
-    parser.add_argument("--targets", nargs="+", default=["chapman", "mimic"])
+    parser.add_argument("--targets", nargs="+", default=["chapman", "georgia"])
     parser.add_argument("--data-root", default=None)
     parser.add_argument("--output-dir", default=None)
     parser.add_argument("--epochs", type=int, default=None)

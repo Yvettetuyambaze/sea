@@ -1,8 +1,6 @@
-"""Download ECG datasets.
+"""Download the public ECG archives used in this project.
 
-Public sets (PTB-XL, Chapman, Georgia, CPSC) need no login. MIMIC-IV-ECG is
-credentialed: credentials come from PHYSIONET_USER / PHYSIONET_PASSWORD and
-are never written to disk or logs. Waveforms stay under data/ (gitignored).
+PTB-XL, Chapman, and Georgia need no login. Waveforms stay under data/ (gitignored).
 """
 
 from __future__ import annotations

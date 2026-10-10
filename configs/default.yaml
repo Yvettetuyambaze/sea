@@ -65,7 +65,7 @@ datasets:
     subsample_seed: 42
 
 # Shared scored SNOMED-CT labels present with usable counts
-# in PTB-XL, Chapman-Shaoxing, and Georgia (MIMIC stand-in).
+# in PTB-XL, Chapman-Shaoxing, and Georgia.
 snomed_shared:
   - {code: "164889003", name: AF, equivalents: ["164889003"]}
   - {code: "270492004", name: IAVB, equivalents: ["270492004"]}

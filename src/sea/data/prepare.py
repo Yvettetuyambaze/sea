@@ -120,7 +120,7 @@ def prepare_uploads(
     print("Prepared dataset roots:")
     for name, path in roots.items():
         print(f"  {name}: {path}")
-    missing = [name for name in ("ptbxl", "chapman", "mimic") if name not in roots]
+    missing = [name for name in ("ptbxl", "chapman", "georgia") if name not in roots]
     if missing:
         print("Still missing:", ", ".join(missing))
     return roots

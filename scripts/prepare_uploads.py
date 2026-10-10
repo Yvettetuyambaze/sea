@@ -32,8 +32,8 @@ def main() -> None:
         print("WARNING: PTB-XL not found. Milestone 2 cannot train until the zip is uploaded.")
     if "chapman" not in roots:
         print("WARNING: Chapman not found. Milestone 3 needs at least one OOD target.")
-    if "mimic" not in roots:
-        print("WARNING: MIMIC tables not found. OOD can still run on Chapman only.")
+    if "georgia" not in roots and "chapman" not in roots:
+        print("WARNING: No Chapman or Georgia folder found. Source training can still run on PTB-XL.")
 
 
 if __name__ == "__main__":

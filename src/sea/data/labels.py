@@ -3,7 +3,7 @@
 PTB-XL diagnostic superclasses are used only for the in-distribution M2
 benchmark (Table 2 of the proposal). Cross-dataset experiments use a shared
 SNOMED-CT subset that is present with usable counts in PTB-XL,
-Chapman-Shaoxing, and MIMIC-IV-ECG. Unmapped statements are dropped, never treated as equivalent.
+Chapman-Shaoxing, and Georgia. Unmapped statements are dropped, never treated as equivalent.
 """
 
 from __future__ import annotations
